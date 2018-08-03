@@ -1,0 +1,8 @@
+<wpml-config>
+  <custom-types>
+    <custom-type translate="1">mts_notification_bar</custom-type>
+  </custom-types>
+  <custom-fields>
+    <custom-field action="translate">_mtsnb_data</custom-field>
+  </custom-fields>
+</wpml-config>
