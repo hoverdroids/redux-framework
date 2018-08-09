@@ -1,0 +1,57 @@
+#wpadminbar ul#wp-admin-bar-root-default>li.tag-enabled,
+#wpadminbar ul#wp-admin-bar-root-default>li.log-enabled{
+	background:	#ffa902;
+}
+#wpadminbar .ab-top-menu>li.menupop.tag-enabled.hover>.ab-item,
+#wpadminbar .ab-top-menu>li.menupop.log-enabled.hover>.ab-item{
+	background:#ffffff;
+}
+#wpadminbar .ab-item.tag-enabled,
+#wpadminbar .ab-item.log-enabled{
+	color:#ff0;
+}
+#wpadminbar>#wp-toolbar>#wp-admin-bar-root-default li:hover.tag-enabled span.ab-label,
+#wpadminbar>#wp-toolbar>#wp-admin-bar-root-default li:hover.log-enabled span.ab-label{
+	color:#ffa902;
+}
+#wpadminbar>#wp-toolbar>#wp-admin-bar-root-default li:hover span.ab-label{
+	color:#333;
+}
+#wpadminbar>#wp-toolbar>#wp-admin-bar-root-default li.tag-enabled span.ab-label,
+#wpadminbar>#wp-toolbar>#wp-admin-bar-root-default li.log-enabled span.ab-label{
+	color:#fff;
+}
+#wpadminbar .ab-submenu li.tag-child-enabled>div,
+#wpadminbar .ab-submenu li.log-child-enabled>div{
+	color:#ffffff;
+}
+#wpadminbar li.menupop :first-child li.clearing-log div,
+#wpadminbar li.menupop.tag-child-enabled :first-child li.tag-enabled div,
+#wpadminbar li.menupop.log-child-enabled :first-child li.log-enabled div{
+	color: #Ffffff;
+}
+#wpadminbar li.tag-child-enabled>div,
+#wpadminbar li.log-child-enabled>div{
+	background:#ffa902;
+}
+#wpadminbar .menupop :first-child li.clearing-log,
+#wpadminbar .tag-child-enabled :first-child li.tag-enabled,
+#wpadminbar .log-child-enabled :first-child li.log-enabled{
+	background: #FFC107;
+}
+#wpadminbar .menupop .menupop>.ab-item:hover:before{
+	color:#ff9102;	
+}
+#wpadminbar .menupop .menupop.tag-child-enabled>.ab-item:before,
+#wpadminbar .menupop .menupop.tag-child-enabled>.ab-item:hover:before,
+#wpadminbar .menupop .menupop.log-child-enabled>.ab-item:before,
+#wpadminbar .menupop .menupop.log-child-enabled>.ab-item:hover:before{
+	color:#ffffff;	
+}
+#wpadminbar:not(.mobile) li:hover .ab-item:after,
+#wpadminbar:not(.mobile) li:hover .ab-item:before{
+	color:#ffc107;	
+}
+#wpadminbar .menupop .menupop>.ab-item:before{
+	color:#ffc107;
+}

@@ -22,7 +22,7 @@
  * @link       #
  * @since      1.0.0
  *
- * @package    MTSNB
+ * @package    console-log
  */
 
 // If uninstall not called from WordPress, then exit.
