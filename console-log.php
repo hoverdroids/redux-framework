@@ -25,7 +25,10 @@ $random_page_id = rand(1,1000);
  * logger is on then "Console Logging" will be highlighted. Otherwise not.
  */
 function admin_bar_menu( $wp_admin_bar ) {
-	
+	console_log("adminbar");
+	console_log_main("main adminbar");
+	console_log_ajax("ajax adminbar");
+	console_alert("Alert buddy adminbar");
 	$wp_admin_bar->add_menu( array(
 		'title'		=> '<span class="ab-icon"></span><span class="ab-label">' . __( 'Captain\'s Log' , 'console-logging' ) . '</span>',
 		'id'		=> 'conlog-main-menu',
@@ -145,6 +148,10 @@ function admin_bar_menu( $wp_admin_bar ) {
 /*-----------------------------------------------------------------------------------------------------------------------*/
 
 function init_console_log(){
+	console_log("init con log");
+	console_log_main("main init con log");
+	console_log_ajax("ajax init con log");
+	console_alert("Alert buddy init");
 	global $current_user;
 
 	if(!get_option('console_log_settings')){
@@ -274,6 +281,7 @@ if ( ! function_exists( 'console_log' ) ) {
 		$tag = '';
 		$log_in_ajax = true;
 		$log_in_main = true;
+		$is_alert = false;
 		for ($i = 0; $i < func_num_args(); $i++) {
 			$arg = func_get_arg($i);
 			if(!empty($arg)){
@@ -286,6 +294,9 @@ if ( ! function_exists( 'console_log' ) ) {
 					
 				} else if(is_string($arg) && strtolower(substr($arg,0,4)) === 'tag-'){
 					$tag = substr($arg,4);
+					
+				}else if(is_string($arg)&& strtolower(substr($arg,0,6)) === 'alert-'){
+					$is_alert = (int) substr($arg,6) > 0 ? true : false;
 					
 				}else{	
 					
@@ -302,8 +313,10 @@ if ( ! function_exists( 'console_log' ) ) {
 					$allowed  = ($is_ajax && $log_in_ajax) || ($is_main && $log_in_main);
 							
 					if($allowed){
-						$data = $is_ajax ? array( 'is_ajax'=> 1) : array();//Not sure why, but can't set is_ajax => 0 without excluding it altogether
-						$data = array_merge($data, array('user_id' => get_current_user_id(), 'session_id' => $conlog_session_id, 'page_id' => $random_page_id, 'meta_value' => $arg));
+						$ajx = $is_ajax ? array( 'is_ajax'=> 1) : array();//Not sure why, but can't set is_ajax => 0 without excluding it altogether
+						$alrt = $is_alert ? array( 'is_alert'=> 1) : array();//Not sure why, but can't set is_ajax => 0 without excluding it altogether
+						
+						$data = array_merge($ajx,$alrt, array('user_id' => get_current_user_id(), 'session_id' => $conlog_session_id, 'page_id' => $random_page_id, 'meta_value' => $arg));
 						
 						$wpdb->insert(conlog_table_name(), $data, $format);
 						$my_id = $wpdb->insert_id;
@@ -324,6 +337,27 @@ if ( ! function_exists( 'console_log_main' ) ) {
 if ( ! function_exists( 'console_log_ajax' ) ) {
 	function console_log_ajax(){
 		$args = array_merge(array('log_main-0'), func_get_args());
+		console_log(...$args);
+	}
+}
+
+if ( ! function_exists( 'console_alert' ) ) {
+	function console_alert(){
+		$args = array_merge(array('alert-1'), func_get_args());
+		console_log(...$args);
+	}
+}
+
+if ( ! function_exists( 'console_alert_main' ) ) {
+	function console_alert_main(){
+		$args = array_merge(array('log_ajax-0','alert-1'), func_get_args());
+		console_log(...$args);
+	}
+}
+
+if ( ! function_exists( 'console_alert_ajax' ) ) {
+	function console_alert_ajax(){
+		$args = array_merge(array('log_main-0','alert-1'), func_get_args());
 		console_log(...$args);
 	}
 }
@@ -426,6 +460,7 @@ function init_conlog_database(){
 				session_id bigint(20) unsigned NOT NULL default '0',
 				page_id bigint(20) unsigned NOT NULL default '0',
 				is_ajax bit NOT NULL default 0,
+				is_alert bit NOT NULL default 0,
 				meta_value longtext,
 				PRIMARY KEY  (id)
 			) $charset_collate;";

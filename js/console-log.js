@@ -129,7 +129,13 @@ jQuery(document).ready(function($) {
 							var pid = show_rand_page_id ? a[i]['page_id'] + " " : '';
 							var ajax = show_is_ajax ? (a[i]['is_ajax'] > 0 ? 'AJAX' : 'NOT_AJAX') + " " : ''; 
 							var meta = a[i]['meta_value'].replace("\\'", "'");
-							console.log(ts + pid + ajax + meta);
+							meta = ts + pid + ajax + meta;
+							
+							if(a[i]['is_alert'] > 0){
+								alert(meta);
+							}else{
+								console.log(meta);
+							}
 						} 
 					}
 				}
