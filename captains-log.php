@@ -1,7 +1,7 @@
 <?php
 /**
  * @wordpress-plugin
- * Plugin Name:       Console Log and PHP Logging
+ * Plugin Name:       Captain's Log
  * Plugin URI:        https://playtcubed.com
  * Description:       Allows debbugging to console.log in browser console, even after the page is loaded! This is essential since <script>console.log('msg')</script> can't be called from php after the headers are sent. It also provides live readings of the php log file  - ie where the error_log() results end up. This is unlike other php logging solutions that require a page refresh to update result (ugh);
  * Version:           1.0.0
@@ -25,10 +25,7 @@ $random_page_id = rand(1,1000);
  * logger is on then "Console Logging" will be highlighted. Otherwise not.
  */
 function admin_bar_menu( $wp_admin_bar ) {
-	console_log("adminbar");
-	console_log_main("main adminbar");
-	console_log_ajax("ajax adminbar");
-	console_alert("Alert buddy adminbar");
+
 	$wp_admin_bar->add_menu( array(
 		'title'		=> '<span class="ab-icon"></span><span class="ab-label">' . __( 'Captain\'s Log' , 'console-logging' ) . '</span>',
 		'id'		=> 'conlog-main-menu',
@@ -64,7 +61,7 @@ function admin_bar_menu( $wp_admin_bar ) {
 		'parent'	=> 'conlog-main',
 		'href'		=> ''
 	) );
-
+/* TODO add the ability to view the error logs in the console window. Too much work for now though
 	$wp_admin_bar->add_menu( array(
 		'title'		=> __( 'error_log' , 'console-logging' ),
 		'id'		=> 'errlog-main',
@@ -86,13 +83,13 @@ function admin_bar_menu( $wp_admin_bar ) {
 		'href'		=> ''
 	) );
 	
-	$wp_admin_bar->add_menu( array(
+	wp_admin_bar->add_menu( array(
 		'title'		=> __( 'CLEAR Log' , 'console-logging' ),
 		'id'		=> 'errlog-clear',
 		'parent'	=> 'errlog-main',
 		'href'		=> ''
 	) );
-
+*/
 	$wp_admin_bar->add_menu( array(
 		'title'		=> __( 'Meta Data' , 'console-logging' ),
 		'id'		=> 'meta-main',
@@ -148,10 +145,7 @@ function admin_bar_menu( $wp_admin_bar ) {
 /*-----------------------------------------------------------------------------------------------------------------------*/
 
 function init_console_log(){
-	console_log("init con log");
-	console_log_main("main init con log");
-	console_log_ajax("ajax init con log");
-	console_alert("Alert buddy init");
+
 	global $current_user;
 
 	if(!get_option('console_log_settings')){
