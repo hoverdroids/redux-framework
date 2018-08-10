@@ -24,7 +24,7 @@ $random_page_id = rand(1,1000);
  * Admin Menu top bar. Click "Console Logging" to toggle all loggers on/off. Click an individual logger to toggle it on/of. If any
  * logger is on then "Console Logging" will be highlighted. Otherwise not.
  */
-function admin_bar_menu( $wp_admin_bar ) {
+function init_conlog_admin_bar_menu( $wp_admin_bar ) {
 
 	$wp_admin_bar->add_menu( array(
 		'title'		=> '<span class="ab-icon"></span><span class="ab-label">' . __( 'Captain\'s Log' , 'console-logging' ) . '</span>',
@@ -177,7 +177,7 @@ add_action( 'init', 'init_console_log' );//Must wait for wp_loaded to get the cu
 
 function setup_console_log($script){
 
-	add_action( 'admin_bar_menu', 'admin_bar_menu', 90 );
+	add_action( 'admin_bar_menu', 'init_conlog_admin_bar_menu', 90 );
 	add_action($script, 'enqueue_console_log_scripts');
 	
 	//This allows the javascript polling to periodically grab the latest writes to the console array
@@ -642,20 +642,17 @@ function clear_error_log(){
 /*-----------------------------------------------------------------------------------------------------------------------*/
 /*--------------------------------------          Other                               -----------------------------------*/
 /*-----------------------------------------------------------------------------------------------------------------------*/
-
-function is_ajax_page(){
-	if( ! empty( $_SERVER[ 'HTTP_X_REQUESTED_WITH' ] ) && strtolower( $_SERVER[ 'HTTP_X_REQUESTED_WITH' ]) == 'xmlhttprequest' ) {
-		return true;
+if ( ! function_exists( 'is_ajax_page' )){
+	function is_ajax_page(){
+		return ( ! empty( $_SERVER[ 'HTTP_X_REQUESTED_WITH' ] ) && strtolower( $_SERVER[ 'HTTP_X_REQUESTED_WITH' ]) == 'xmlhttprequest' ) ? true : false;
 	}
-	return false;
 }
 
-function enable_front_end_ajaxurl() {
-	echo '<script type="text/javascript">
-			var ajaxurl = "' . admin_url('admin-ajax.php') . '";
-		</script>';
+if ( ! function_exists( 'enable_front_end_ajaxurl' )){
+	function enable_front_end_ajaxurl() {
+		echo '<script type="text/javascript"> var ajaxurl = "' . admin_url('admin-ajax.php') . '"; </script>';
+	}
 }
-
 /**
 *	--------------------------- Actions and filters --------------------------------------------
 *	TODO we should include enter and exit functions - one function that sets priority to 0 to be firect first and then one that is set to some
