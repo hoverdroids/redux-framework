@@ -655,3 +655,159 @@ function enable_front_end_ajaxurl() {
 			var ajaxurl = "' . admin_url('admin-ajax.php') . '";
 		</script>';
 }
+
+/**
+*	--------------------------- Actions and filters --------------------------------------------
+*	TODO we should include enter and exit functions - one function that sets priority to 0 to be firect first and then one that is set to some
+*	obsurdly large number to go last. This lets us know before anything is modified and after everything is modified
+*/
+/*
+function conlog_muplugins_loaded(){
+	
+}
+add_action( 'muplugins_loaded', 'conlog_muplugins_loaded');	
+
+function conlog_registered_taxonomy(){//$taxonomy, $object_type, $args 
+	
+}
+add_action( 'registered_taxonomy', 'conlog_registered_taxonomy');	
+
+function conlog_registered_post_type(){//$post_type, $post_type_object 
+	
+}
+add_action( 'registered_post_type', 'conlog_registered_post_type');	
+
+
+
+
+
+
+function conlog_plugins_loaded($array){
+	
+}
+add_action( 'plugins_loaded', 'conlog_plugins_loaded');	
+
+function conlog_sanitize_comment_cookies($sanitize_comment_cookies ){
+	
+}
+add_action( 'sanitize_comment_cookies', 'conlog_sanitize_comment_cookies');	
+
+function conlog_setup_theme( $theme_setup ){
+	
+}
+add_action( 'setup_theme', 'conlog_setup_theme');	
+
+function conlog_load_textdomain(){//$domain, $mofile
+	
+}
+add_action( 'load_textdomain', 'conlog_load_textdomain');	
+
+function conlog_after_setup_theme(){// $array, $int 
+	
+}
+add_action( 'after_setup_theme', 'conlog_after_setup_theme');	
+
+function conlog_auth_cookie_malformed($rest_cookie_collect_status ){
+	
+}
+add_action( 'auth_cookie_malformed', 'conlog_auth_cookie_malformed');
+
+
+
+
+
+
+
+function conlog_auth_cookie_valid($rest_cookie_collect_status){
+	
+}
+add_action( 'auth_cookie_valid', 'conlog_auth_cookie_valid');	
+
+function conlog_set_current_user( $kses_init ){
+	
+}
+add_action( 'set_current_user', 'conlog_set_current_user');	
+
+function conlog_init(){
+	
+}
+add_action( 'init', 'conlog_init');	
+
+function conlog_widgets_init(){
+	
+}
+add_action( 'widgets_init', 'conlog_widgets_init');	
+
+function conlog_register_sidebar( $sidebar ){
+	
+}
+add_action( 'register_sidebar', 'conlog_register_sidebar');
+	
+function conlog_wp_register_sidebar_widget( $widget ){
+	
+}
+add_action( 'wp_register_sidebar_widget', 'conlog_wp_register_sidebar_widget');	
+
+
+
+
+
+
+
+function conlog_wp_default_scripts( $scripts ){
+	
+}
+add_action( 'wp_default_scripts', 'conlog_wp_default_scripts');	
+
+function conlog_wp_default_styles( $styles ){
+	
+}
+add_action( 'wp_default_styles', 'conlog_wp_default_styles');	
+
+function conlog_admin_bar_init( ){
+	
+}
+add_action( 'admin_bar_init', 'conlog_admin_bar_init');	
+
+function conlog_add_admin_bar_menus( $wp_admin_bar ){
+	
+}
+add_action( 'add_admin_bar_menus', 'conlog_add_admin_bar_menus');	
+
+function conlog_wp_loaded(){// $array, $int 
+	
+}
+add_action( 'wp_loaded', 'conlog_wp_loaded');	
+
+function conlog_parse_request( $query){
+	
+}
+add_action( 'parse_request', 'conlog_parse_request');	
+
+function conlog_send_headers(){
+	
+}
+add_action( 'send_headers', 'conlog_send_headers');
+
+
+function conlog_parse_query( $wp_query  ){
+	
+}
+add_action( 'parse_query', 'conlog_parse_query');	
+
+function conlog_pre_get_posts(  $query  ){
+	
+}
+add_action( 'pre_get_posts', 'conlog_pre_get_posts');
+	
+function conlog_posts_selection( $query  ){
+	
+}
+add_action( 'posts_selection', 'conlog_posts_selection');	
+
+function conlog_wp(){
+	
+}
+add_action( 'wp', 'conlog_wp');	
+
+*/
