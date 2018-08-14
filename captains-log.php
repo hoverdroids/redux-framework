@@ -293,8 +293,8 @@ if ( ! function_exists( 'console_log' ) ) {
 					$is_alert = (int) substr($arg,6) > 0 ? true : false;
 					
 				}else{	
-					
-					$arg = is_array($arg) ? wp_json_encode($arg, JSON_HEX_TAG | JSON_HEX_AMP ) :  $arg;	
+					//If the arg is not already a string, ie an object or array, convert it to a string first
+					$arg = !is_string($arg) ? wp_json_encode($arg, JSON_HEX_TAG | JSON_HEX_AMP ) :  $arg;	
 					$arg = str_replace("'", "\'", $tag." ".$arg);//Prevents the following error when strings (single or in array) have apostrophes
 																 //error: Uncaught SyntaxError: missing ) after argument list 
 				
