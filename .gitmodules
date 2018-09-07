@@ -1,0 +1,3 @@
+[submodule "admin/redux-extensions/extensions/0_captains_log"]
+	path = admin/redux-extensions/extensions/0_captains_log
+	url = https://spragucm@bitbucket.org/hoverdroids/0_captains_log.git
