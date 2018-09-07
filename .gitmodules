@@ -1,3 +1,6 @@
 [submodule "admin/redux-extensions/extensions/0_captains_log"]
 	path = admin/redux-extensions/extensions/0_captains_log
 	url = https://spragucm@bitbucket.org/hoverdroids/0_captains_log.git
+[submodule "admin/redux-framework"]
+	path = admin/redux-framework
+	url = https://github.com/hoverdroids/redux-framework.git
