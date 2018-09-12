@@ -1,0 +1,3 @@
+[submodule "assets/css/vendor/elusive-icons"]
+	path = assets/css/vendor/elusive-icons
+	url = https://github.com/hoverdroids/elusive-icons.git
