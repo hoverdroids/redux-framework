@@ -1,0 +1,2 @@
+Version					Requires:
+3.6.11-CR1.1 				Elusive Icons VER_2.0.0-MIN_1.1 https://github.com/hoverdroids/elusive-icons
